@@ -1,0 +1,33 @@
+CREATE TABLE "Diversity" (
+    "County" VARCHAR   NOT NULL,
+    "State" VARCHAR   NOT NULL,
+    "Diversity_Index" VARCHAR   NOT NULL,
+    "African_American" ARCHAR   NOT NULL,
+    "Native_American" ARCHAR   NOT NULL,
+    "Asian" ARCHAR   NOT NULL,
+    "Pacific_Islander" VARCHAR   NOT NULL,
+    "Multi_Racial" VARCHAR   NOT NULL,
+    "Hispanic_or_Latino" VARCHAR   NOT NULL,
+    "White" VARCHAR   NOT NULL,
+    CONSTRAINT "pk_Diversity" PRIMARY KEY (
+        "County","State"
+     )
+);
+
+CREATE TABLE "Median_Income" (
+    "County" VARCHAR   NOT NULL,
+    "State_Name" VARCHAR   NOT NULL,
+    "State" VARCHAR   NOT NULL,
+    "City" VARCHAR   NOT NULL,
+    "PLace" VARCHAR   NOT NULL,
+    "Zip_Code" VARCHAR   NOT NULL,
+    "Lat" FLOAT   NOT NULL,
+    "Lon" FLOAT   NOT NULL,
+    "Mean" INT   NOT NULL,
+    "Median" INT   NOT NULL,
+    "Stdev" INT   NOT NULL
+);
+
+ALTER TABLE "Median_Income" ADD CONSTRAINT "fk_Median_Income_County_State" FOREIGN KEY("County", "State")
+REFERENCES "Diversity" ("County", "State");
+
